@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-pink-primary: #ff4fa3;
+  --color-pink-blush: #ffe0f0;
+  --color-pink-glow: #b30059;
+  
+  --font-heading: 'Poppins', 'Quicksand', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-body);
+    @apply text-gray-800 bg-pink-blush transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply text-gray-100 bg-gray-950;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-md border border-white/40 shadow-xl rounded-2xl;
+  }
+  
+  .dark .glass-card {
+    @apply bg-gray-900/60 border-gray-700/40 shadow-[0_0_15px_rgba(255,79,163,0.15)];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-pink-primary text-white rounded-full font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,79,163,0.6)] hover:bg-pink-400 hover:-translate-y-1;
+  }
+  
+  .glowing-text {
+    @apply text-pink-primary drop-shadow-[0_0_8px_rgba(255,79,163,0.8)];
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-pink-primary/50 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-pink-primary;
+}
